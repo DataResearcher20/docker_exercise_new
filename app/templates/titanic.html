@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Titanic Data</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+</head>
+<body>
+    <main>
+        <h1>Titanic Data</h1>
+        <h2>First 5 Rows</h2>
+        {{ table_html | safe }}
+
+        <h2>Survival by Gender</h2>
+        <canvas id="genderChart"></canvas>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const genderData = {
+            labels: ['Men', 'Women'],
+            datasets: [{
+                data: [109, 233], // Replace with your actual data
+                backgroundColor: ['blue', 'pink']
+            }]
+        };
+
+        const genderChart = new Chart(document.getElementById('genderChart'), {
+            type: 'bar',
+            data: genderData,
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
